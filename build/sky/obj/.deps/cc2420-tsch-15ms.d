@@ -27,27 +27,7 @@ build/sky/obj/cc2420-tsch-15ms.o: \
  ../../os/net/mac/framer/frame802154e-ie.h \
  ../../os/net/mac/tsch/tsch-security.h \
  ../../os/net/mac/tsch/tsch-schedule.h ../../os/net/mac/tsch/tsch-stats.h \
- ../../os/net/mac/tsch/tsch-roots.h ../../os/net/mac/tsch/tsch-rpl.h \
- ../../os/net/routing/routing.h ../../os/net/ipv6/uip-ds6-nbr.h \
- ../../os/net/ipv6/uip-nd6.h ../../os/sys/stimer.h \
- ../../os/net/nbr-table.h ../../os/net/ipv6/uip-ds6-route.h \
- ../../os/net/ipv6/uip-sr.h ../../os/net/routing/rpl-lite/rpl.h \
- ../../os/net/routing/rpl-lite/rpl-const.h \
- ../../os/net/routing/rpl-lite/rpl-conf.h \
- ../../os/net/routing/rpl-lite/rpl-types.h \
- ../../os/net/routing/rpl-lite/rpl-icmp6.h ../../os/net/ipv6/uip.h \
- ../../os/net/ipv6/uip-ds6.h ../../os/net/ipv6/multicast/uip-mcast6.h \
- ../../os/net/ipv6/multicast/uip-mcast6-engines.h \
- ../../os/net/ipv6/multicast/uip-mcast6-route.h \
- ../../os/net/ipv6/multicast/smrf.h ../../os/net/ipv6/multicast/esmrf.h \
- ../../os/net/ipv6/multicast/roll-tm.h \
- ../../os/net/ipv6/multicast/uip-mcast6-stats.h \
- ../../os/net/ipv6/multicast/mpl.h ../../os/net/ipv6/uip-ds6-nbr.h \
- ../../os/net/routing/rpl-lite/rpl-dag.h \
- ../../os/net/routing/rpl-lite/rpl-dag-root.h \
- ../../os/net/routing/rpl-lite/rpl-neighbor.h ../../os/net/ipv6/uip-ds6.h \
- ../../os/sys/ctimer.h ../../os/net/routing/rpl-lite/rpl-ext-header.h \
- ../../os/net/routing/rpl-lite/rpl-timers.h \
+ ../../os/net/mac/tsch/tsch-roots.h \
  ../../arch/dev/radio/cc2420/cc2420-tsch-15ms.h
 
 ../../os/contiki.h:
@@ -163,67 +143,5 @@ build/sky/obj/cc2420-tsch-15ms.o: \
 ../../os/net/mac/tsch/tsch-stats.h:
 
 ../../os/net/mac/tsch/tsch-roots.h:
-
-../../os/net/mac/tsch/tsch-rpl.h:
-
-../../os/net/routing/routing.h:
-
-../../os/net/ipv6/uip-ds6-nbr.h:
-
-../../os/net/ipv6/uip-nd6.h:
-
-../../os/sys/stimer.h:
-
-../../os/net/nbr-table.h:
-
-../../os/net/ipv6/uip-ds6-route.h:
-
-../../os/net/ipv6/uip-sr.h:
-
-../../os/net/routing/rpl-lite/rpl.h:
-
-../../os/net/routing/rpl-lite/rpl-const.h:
-
-../../os/net/routing/rpl-lite/rpl-conf.h:
-
-../../os/net/routing/rpl-lite/rpl-types.h:
-
-../../os/net/routing/rpl-lite/rpl-icmp6.h:
-
-../../os/net/ipv6/uip.h:
-
-../../os/net/ipv6/uip-ds6.h:
-
-../../os/net/ipv6/multicast/uip-mcast6.h:
-
-../../os/net/ipv6/multicast/uip-mcast6-engines.h:
-
-../../os/net/ipv6/multicast/uip-mcast6-route.h:
-
-../../os/net/ipv6/multicast/smrf.h:
-
-../../os/net/ipv6/multicast/esmrf.h:
-
-../../os/net/ipv6/multicast/roll-tm.h:
-
-../../os/net/ipv6/multicast/uip-mcast6-stats.h:
-
-../../os/net/ipv6/multicast/mpl.h:
-
-../../os/net/ipv6/uip-ds6-nbr.h:
-
-../../os/net/routing/rpl-lite/rpl-dag.h:
-
-../../os/net/routing/rpl-lite/rpl-dag-root.h:
-
-../../os/net/routing/rpl-lite/rpl-neighbor.h:
-
-../../os/net/ipv6/uip-ds6.h:
-
-../../os/sys/ctimer.h:
-
-../../os/net/routing/rpl-lite/rpl-ext-header.h:
-
-../../os/net/routing/rpl-lite/rpl-timers.h:
 
 ../../arch/dev/radio/cc2420/cc2420-tsch-15ms.h:

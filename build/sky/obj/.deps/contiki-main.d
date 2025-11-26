@@ -63,18 +63,7 @@ build/sky/obj/contiki-main.o: ../../os/contiki-main.c ../../os/contiki.h \
  ../../os/net/mac/framer/frame802154e-ie.h \
  ../../os/net/mac/tsch/tsch-security.h \
  ../../os/net/mac/tsch/tsch-schedule.h ../../os/net/mac/tsch/tsch-stats.h \
- ../../os/net/mac/tsch/tsch-roots.h ../../os/net/mac/tsch/tsch-rpl.h \
- ../../os/net/routing/routing.h ../../os/net/routing/rpl-lite/rpl.h \
- ../../os/net/routing/rpl-lite/rpl-const.h \
- ../../os/net/routing/rpl-lite/rpl-conf.h \
- ../../os/net/routing/rpl-lite/rpl-types.h \
- ../../os/net/routing/rpl-lite/rpl-icmp6.h ../../os/net/ipv6/uip.h \
- ../../os/net/ipv6/uip-ds6.h ../../os/net/ipv6/uip-ds6-nbr.h \
- ../../os/net/routing/rpl-lite/rpl-dag.h \
- ../../os/net/routing/rpl-lite/rpl-dag-root.h \
- ../../os/net/routing/rpl-lite/rpl-neighbor.h ../../os/sys/ctimer.h \
- ../../os/net/routing/rpl-lite/rpl-ext-header.h \
- ../../os/net/routing/rpl-lite/rpl-timers.h \
+ ../../os/net/mac/tsch/tsch-roots.h \
  ../../arch/dev/radio/cc2420/cc2420-tsch-15ms.h \
  ../../os/services/orchestra/orchestra-conf.h \
  ../../os/services/shell/serial-shell.h \
@@ -310,38 +299,6 @@ build/sky/obj/contiki-main.o: ../../os/contiki-main.c ../../os/contiki.h \
 ../../os/net/mac/tsch/tsch-stats.h:
 
 ../../os/net/mac/tsch/tsch-roots.h:
-
-../../os/net/mac/tsch/tsch-rpl.h:
-
-../../os/net/routing/routing.h:
-
-../../os/net/routing/rpl-lite/rpl.h:
-
-../../os/net/routing/rpl-lite/rpl-const.h:
-
-../../os/net/routing/rpl-lite/rpl-conf.h:
-
-../../os/net/routing/rpl-lite/rpl-types.h:
-
-../../os/net/routing/rpl-lite/rpl-icmp6.h:
-
-../../os/net/ipv6/uip.h:
-
-../../os/net/ipv6/uip-ds6.h:
-
-../../os/net/ipv6/uip-ds6-nbr.h:
-
-../../os/net/routing/rpl-lite/rpl-dag.h:
-
-../../os/net/routing/rpl-lite/rpl-dag-root.h:
-
-../../os/net/routing/rpl-lite/rpl-neighbor.h:
-
-../../os/sys/ctimer.h:
-
-../../os/net/routing/rpl-lite/rpl-ext-header.h:
-
-../../os/net/routing/rpl-lite/rpl-timers.h:
 
 ../../arch/dev/radio/cc2420/cc2420-tsch-15ms.h:
 
