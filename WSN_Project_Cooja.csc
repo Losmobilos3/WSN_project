@@ -11,7 +11,7 @@
       <transmitting_range>50.0</transmitting_range>
       <interference_range>100.0</interference_range>
       <success_ratio_tx>1.0</success_ratio_tx>
-      <success_ratio_rx>1.0</success_ratio_rx>
+      <success_ratio_rx>0.0</success_ratio_rx>
     </radiomedium>
     <events>
       <logoutput>40000</logoutput>
@@ -43,8 +43,8 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>41.086521947449974</x>
-        <y>65.60589922041163</y>
+        <x>0.0</x>
+        <y>0.0</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -61,8 +61,8 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>28.458497515673685</x>
-        <y>52.43866085432446</y>
+        <x>0.0</x>
+        <y>0.0</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -79,8 +79,8 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>6.830522087791668</x>
-        <y>77.15936959931379</y>
+        <x>40.0</x>
+        <y>0.0</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -101,7 +101,7 @@
     <width>280</width>
     <z>4</z>
     <height>160</height>
-    <location_x>400</location_x>
+    <location_x>0</location_x>
     <location_y>0</location_y>
   </plugin>
   <plugin>
@@ -110,7 +110,7 @@
       <moterelations>true</moterelations>
       <skin>org.contikios.cooja.plugins.skins.IDVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.UDGMVisualizerSkin</skin>
-      <viewport>6.180735450568881 0.0 0.0 6.180735450568881 49.41871362245591 -238.19717905203652</viewport>
+      <viewport>6.0 0.0 0.0 6.0 0.0 0.0</viewport>
     </plugin_config>
     <width>400</width>
     <z>1</z>

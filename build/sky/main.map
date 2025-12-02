@@ -10,6 +10,8 @@ Archive member included because of file (symbol)
                               build/sky/obj/ifft.o (__udivsi3)
 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_divmod32.o)
                               build/sky/obj/cfs-coffee.o (__divsi3)
+/usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+                              build/sky/obj/main.o (malloc)
 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
                               build/sky/obj/assert.o (printf)
 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
@@ -60,6 +62,7 @@ nullnet_buf         0x2               build/sky/obj/nullnet.o
 cc2420_last_rssi    0x1               build/sky/obj/cc2420.o
 cc2420_sfd_start_time
                     0x2               build/sky/obj/cc2420.o
+exp_done            0x1               build/sky/obj/main.o
 button_hal_release_event
                     0x1               build/sky/obj/button-hal.o
 packetbuf_addrs     0x10              build/sky/obj/packetbuf.o
@@ -84,6 +87,7 @@ serial_line_event_message
 cc2420_sfd_end_time
                     0x2               build/sky/obj/cc2420.o
 sensors_event       0x1               build/sky/obj/sensors.o
+acknowledgement     0x1               build/sky/obj/main.o
 ds2411_id           0x8               build/sky/obj/ds2411.o
 
 Discarded input sections
@@ -974,6 +978,9 @@ Discarded input sections
  .debug_abbrev  0x00000000       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_divmod32.o)
  .debug_aranges
                 0x00000000       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_divmod32.o)
+ .text          0x00000000        0x0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .data          0x00000000        0x0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .bss           0x00000000        0x0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
  .text          0x00000000        0x0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
  .data          0x00000000        0x0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
  .bss           0x00000000        0x0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
@@ -1094,7 +1101,7 @@ far_rom          0x00000000         0x00000000
 Linker script and memory map
 
 LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/crt0ivtbl16.o
-                0x00001c96                _stack = _end
+                0x00001cba                _stack = _end
 LOAD build/sky/obj/aes-128.o
 LOAD build/sky/obj/anti-replay.o
 LOAD build/sky/obj/assert.o
@@ -1436,7 +1443,7 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
 .rela.plt
  *(SORT(.rela.plt))
 
-.text           0x00004000     0x40d4
+.text           0x00004000     0x43e6
                 0x00004000                . = ALIGN (0x2)
  *(SORT(.init) SORT(.init.*))
  *(SORT(.init0))
@@ -1795,381 +1802,396 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
  .text.mac_call_sent_callback
                 0x00006436       0x14 build/sky/obj/mac.o
                 0x00006436                mac_call_sent_callback
- .text.process_thread_process
-                0x0000644a       0x6e build/sky/obj/main.o
+ .text.process_thread_main_process
+                0x0000644a       0xfc build/sky/obj/main.o
+ .text.send_ack
+                0x00006546       0x26 build/sky/obj/main.o
+                0x00006546                send_ack
+ .text.send_msg
+                0x0000656c       0x26 build/sky/obj/main.o
+                0x0000656c                send_msg
+ .text.process_thread_no_relay_process
+                0x00006592       0xbe build/sky/obj/main.o
+ .text.addr_equal
+                0x00006650       0x22 build/sky/obj/main.o
+                0x00006650                addr_equal
  .text.input_callback
-                0x000064b8       0x66 build/sky/obj/main.o
-                0x000064b8                input_callback
+                0x00006672       0xe8 build/sky/obj/main.o
+                0x00006672                input_callback
  .text.memb_init
-                0x0000651e       0x36 build/sky/obj/memb.o
-                0x0000651e                memb_init
+                0x0000675a       0x36 build/sky/obj/memb.o
+                0x0000675a                memb_init
  .text.memb_alloc
-                0x00006554       0x3e build/sky/obj/memb.o
-                0x00006554                memb_alloc
+                0x00006790       0x3e build/sky/obj/memb.o
+                0x00006790                memb_alloc
  .text.memb_free
-                0x00006592       0x32 build/sky/obj/memb.o
-                0x00006592                memb_free
+                0x000067ce       0x32 build/sky/obj/memb.o
+                0x000067ce                memb_free
  .text.memb_inmemb
-                0x000065c4       0x2a build/sky/obj/memb.o
-                0x000065c4                memb_inmemb
+                0x00006800       0x2a build/sky/obj/memb.o
+                0x00006800                memb_inmemb
  .text.msp430_init_dco
-                0x000065ee       0x82 build/sky/obj/msp430.o
-                0x000065ee                msp430_init_dco
+                0x0000682a       0x82 build/sky/obj/msp430.o
+                0x0000682a                msp430_init_dco
  .text.msp430_add_lpm_req
-                0x00006670        0xc build/sky/obj/msp430.o
-                0x00006670                msp430_add_lpm_req
+                0x000068ac        0xc build/sky/obj/msp430.o
+                0x000068ac                msp430_add_lpm_req
  .text.msp430_cpu_init
-                0x0000667c       0x2a build/sky/obj/msp430.o
-                0x0000667c                msp430_cpu_init
+                0x000068b8       0x2a build/sky/obj/msp430.o
+                0x000068b8                msp430_cpu_init
  .text.splhigh_
-                0x000066a6        0xa build/sky/obj/msp430.o
-                0x000066a6                splhigh_
+                0x000068e2        0xa build/sky/obj/msp430.o
+                0x000068e2                splhigh_
  .text.msp430_sync_dco
-                0x000066b0       0x6c build/sky/obj/msp430.o
-                0x000066b0                msp430_sync_dco
+                0x000068ec       0x6c build/sky/obj/msp430.o
+                0x000068ec                msp430_sync_dco
  .text.netstack_init
-                0x0000671c        0xe build/sky/obj/netstack.o
-                0x0000671c                netstack_init
+                0x00006958        0xe build/sky/obj/netstack.o
+                0x00006958                netstack_init
  .text.node_id_init
-                0x0000672a       0x14 build/sky/obj/node-id.o
-                0x0000672a                node_id_init
- .text.init     0x0000673e        0x6 build/sky/obj/nullnet.o
- .text.output   0x00006744       0x42 build/sky/obj/nullnet.o
- .text.input    0x00006786       0x40 build/sky/obj/nullnet.o
+                0x00006966       0x14 build/sky/obj/node-id.o
+                0x00006966                node_id_init
+ .text.init     0x0000697a        0x6 build/sky/obj/nullnet.o
+ .text.output   0x00006980       0x42 build/sky/obj/nullnet.o
+ .text.input    0x000069c2       0x40 build/sky/obj/nullnet.o
  .text.nullnet_set_input_callback
-                0x000067c6        0x6 build/sky/obj/nullnet.o
-                0x000067c6                nullnet_set_input_callback
- .text.init     0x000067cc        0x2 build/sky/obj/nullrouting.o
+                0x00006a02        0x6 build/sky/obj/nullnet.o
+                0x00006a02                nullnet_set_input_callback
+ .text.init     0x00006a08        0x2 build/sky/obj/nullrouting.o
  .text.root_set_prefix
-                0x000067ce        0x2 build/sky/obj/nullrouting.o
+                0x00006a0a        0x2 build/sky/obj/nullrouting.o
  .text.root_start
-                0x000067d0        0x4 build/sky/obj/nullrouting.o
+                0x00006a0c        0x4 build/sky/obj/nullrouting.o
  .text.node_is_root
-                0x000067d4        0x4 build/sky/obj/nullrouting.o
+                0x00006a10        0x4 build/sky/obj/nullrouting.o
  .text.get_root_ipaddr
-                0x000067d8        0x4 build/sky/obj/nullrouting.o
+                0x00006a14        0x4 build/sky/obj/nullrouting.o
  .text.get_sr_node_ipaddr
-                0x000067dc        0x4 build/sky/obj/nullrouting.o
+                0x00006a18        0x4 build/sky/obj/nullrouting.o
  .text.leave_network
-                0x000067e0        0x2 build/sky/obj/nullrouting.o
+                0x00006a1c        0x2 build/sky/obj/nullrouting.o
  .text.node_has_joined
-                0x000067e2        0x4 build/sky/obj/nullrouting.o
+                0x00006a1e        0x4 build/sky/obj/nullrouting.o
  .text.node_is_reachable
-                0x000067e6        0x4 build/sky/obj/nullrouting.o
+                0x00006a22        0x4 build/sky/obj/nullrouting.o
  .text.global_repair
-                0x000067ea        0x2 build/sky/obj/nullrouting.o
+                0x00006a26        0x2 build/sky/obj/nullrouting.o
  .text.local_repair
-                0x000067ec        0x2 build/sky/obj/nullrouting.o
+                0x00006a28        0x2 build/sky/obj/nullrouting.o
  .text.ext_header_remove
-                0x000067ee        0x4 build/sky/obj/nullrouting.o
+                0x00006a2a        0x4 build/sky/obj/nullrouting.o
  .text.ext_header_update
-                0x000067f2        0x4 build/sky/obj/nullrouting.o
+                0x00006a2e        0x4 build/sky/obj/nullrouting.o
  .text.ext_header_hbh_update
-                0x000067f6        0x4 build/sky/obj/nullrouting.o
+                0x00006a32        0x4 build/sky/obj/nullrouting.o
  .text.ext_header_srh_update
-                0x000067fa        0x4 build/sky/obj/nullrouting.o
+                0x00006a36        0x4 build/sky/obj/nullrouting.o
  .text.ext_header_srh_get_next_hop
-                0x000067fe        0x4 build/sky/obj/nullrouting.o
+                0x00006a3a        0x4 build/sky/obj/nullrouting.o
  .text.link_callback
-                0x00006802        0x2 build/sky/obj/nullrouting.o
+                0x00006a3e        0x2 build/sky/obj/nullrouting.o
  .text.neighbor_state_changed
-                0x00006804        0x2 build/sky/obj/nullrouting.o
+                0x00006a40        0x2 build/sky/obj/nullrouting.o
  .text.drop_route
-                0x00006806        0x2 build/sky/obj/nullrouting.o
+                0x00006a42        0x2 build/sky/obj/nullrouting.o
  .text.is_in_leaf_mode
-                0x00006808        0x4 build/sky/obj/nullrouting.o
+                0x00006a44        0x4 build/sky/obj/nullrouting.o
  .text.packetbuf_hdrreduce
-                0x0000680c       0x1a build/sky/obj/packetbuf.o
-                0x0000680c                packetbuf_hdrreduce
+                0x00006a48       0x1a build/sky/obj/packetbuf.o
+                0x00006a48                packetbuf_hdrreduce
  .text.packetbuf_set_datalen
-                0x00006826        0x6 build/sky/obj/packetbuf.o
-                0x00006826                packetbuf_set_datalen
+                0x00006a62        0x6 build/sky/obj/packetbuf.o
+                0x00006a62                packetbuf_set_datalen
  .text.packetbuf_hdrptr
-                0x0000682c        0x6 build/sky/obj/packetbuf.o
-                0x0000682c                packetbuf_hdrptr
+                0x00006a68        0x6 build/sky/obj/packetbuf.o
+                0x00006a68                packetbuf_hdrptr
  .text.packetbuf_datalen
-                0x00006832        0x6 build/sky/obj/packetbuf.o
-                0x00006832                packetbuf_datalen
+                0x00006a6e        0x6 build/sky/obj/packetbuf.o
+                0x00006a6e                packetbuf_datalen
  .text.packetbuf_hdrlen
-                0x00006838        0xa build/sky/obj/packetbuf.o
-                0x00006838                packetbuf_hdrlen
+                0x00006a74        0xa build/sky/obj/packetbuf.o
+                0x00006a74                packetbuf_hdrlen
  .text.packetbuf_dataptr
-                0x00006842        0xc build/sky/obj/packetbuf.o
-                0x00006842                packetbuf_dataptr
+                0x00006a7e        0xc build/sky/obj/packetbuf.o
+                0x00006a7e                packetbuf_dataptr
  .text.packetbuf_copyto
-                0x0000684e       0x46 build/sky/obj/packetbuf.o
-                0x0000684e                packetbuf_copyto
+                0x00006a8a       0x46 build/sky/obj/packetbuf.o
+                0x00006a8a                packetbuf_copyto
  .text.packetbuf_totlen
-                0x00006894        0xc build/sky/obj/packetbuf.o
-                0x00006894                packetbuf_totlen
+                0x00006ad0        0xc build/sky/obj/packetbuf.o
+                0x00006ad0                packetbuf_totlen
  .text.packetbuf_hdralloc
-                0x000068a0       0x3c build/sky/obj/packetbuf.o
-                0x000068a0                packetbuf_hdralloc
+                0x00006adc       0x3c build/sky/obj/packetbuf.o
+                0x00006adc                packetbuf_hdralloc
  .text.packetbuf_attr_clear
-                0x000068dc       0x28 build/sky/obj/packetbuf.o
-                0x000068dc                packetbuf_attr_clear
+                0x00006b18       0x28 build/sky/obj/packetbuf.o
+                0x00006b18                packetbuf_attr_clear
  .text.packetbuf_clear
-                0x00006904       0x12 build/sky/obj/packetbuf.o
-                0x00006904                packetbuf_clear
+                0x00006b40       0x12 build/sky/obj/packetbuf.o
+                0x00006b40                packetbuf_clear
  .text.packetbuf_copyfrom
-                0x00006916       0x2e build/sky/obj/packetbuf.o
-                0x00006916                packetbuf_copyfrom
+                0x00006b52       0x2e build/sky/obj/packetbuf.o
+                0x00006b52                packetbuf_copyfrom
  .text.packetbuf_attr_copyto
-                0x00006944       0x22 build/sky/obj/packetbuf.o
-                0x00006944                packetbuf_attr_copyto
+                0x00006b80       0x22 build/sky/obj/packetbuf.o
+                0x00006b80                packetbuf_attr_copyto
  .text.packetbuf_attr_copyfrom
-                0x00006966       0x24 build/sky/obj/packetbuf.o
-                0x00006966                packetbuf_attr_copyfrom
+                0x00006ba2       0x24 build/sky/obj/packetbuf.o
+                0x00006ba2                packetbuf_attr_copyfrom
  .text.packetbuf_set_attr
-                0x0000698a        0xc build/sky/obj/packetbuf.o
-                0x0000698a                packetbuf_set_attr
+                0x00006bc6        0xc build/sky/obj/packetbuf.o
+                0x00006bc6                packetbuf_set_attr
  .text.packetbuf_attr
-                0x00006996        0xa build/sky/obj/packetbuf.o
-                0x00006996                packetbuf_attr
+                0x00006bd2        0xa build/sky/obj/packetbuf.o
+                0x00006bd2                packetbuf_attr
  .text.packetbuf_set_addr
-                0x000069a0       0x18 build/sky/obj/packetbuf.o
-                0x000069a0                packetbuf_set_addr
+                0x00006bdc       0x18 build/sky/obj/packetbuf.o
+                0x00006bdc                packetbuf_set_addr
  .text.packetbuf_addr
-                0x000069b8       0x12 build/sky/obj/packetbuf.o
-                0x000069b8                packetbuf_addr
+                0x00006bf4       0x12 build/sky/obj/packetbuf.o
+                0x00006bf4                packetbuf_addr
  .text.packetbuf_holds_broadcast
-                0x000069ca        0xe build/sky/obj/packetbuf.o
-                0x000069ca                packetbuf_holds_broadcast
+                0x00006c06        0xe build/sky/obj/packetbuf.o
+                0x00006c06                packetbuf_holds_broadcast
  .text.platform_init_stage_one
-                0x000069d8       0x12 build/sky/obj/platform.o
-                0x000069d8                platform_init_stage_one
+                0x00006c14       0x12 build/sky/obj/platform.o
+                0x00006c14                platform_init_stage_one
  .text.platform_init_stage_two
-                0x000069ea       0x68 build/sky/obj/platform.o
-                0x000069ea                platform_init_stage_two
+                0x00006c26       0x68 build/sky/obj/platform.o
+                0x00006c26                platform_init_stage_two
  .text.platform_init_stage_three
-                0x00006a52       0x86 build/sky/obj/platform.o
-                0x00006a52                platform_init_stage_three
+                0x00006c8e       0x86 build/sky/obj/platform.o
+                0x00006c8e                platform_init_stage_three
  .text.platform_idle
-                0x00006ad8       0x54 build/sky/obj/platform.o
-                0x00006ad8                platform_idle
+                0x00006d14       0x54 build/sky/obj/platform.o
+                0x00006d14                platform_idle
  .text.call_process
-                0x00006b2c       0x46 build/sky/obj/process.o
+                0x00006d68       0x46 build/sky/obj/process.o
  .text.exit_process
-                0x00006b72       0x96 build/sky/obj/process.o
- .text.do_poll  0x00006c08       0x30 build/sky/obj/process.o
+                0x00006dae       0x96 build/sky/obj/process.o
+ .text.do_poll  0x00006e44       0x30 build/sky/obj/process.o
  .text.process_alloc_event
-                0x00006c38        0xe build/sky/obj/process.o
-                0x00006c38                process_alloc_event
+                0x00006e74        0xe build/sky/obj/process.o
+                0x00006e74                process_alloc_event
  .text.process_init
-                0x00006c46       0x18 build/sky/obj/process.o
-                0x00006c46                process_init
+                0x00006e82       0x18 build/sky/obj/process.o
+                0x00006e82                process_init
  .text.process_run
-                0x00006c5e       0x92 build/sky/obj/process.o
-                0x00006c5e                process_run
+                0x00006e9a       0x92 build/sky/obj/process.o
+                0x00006e9a                process_run
  .text.process_nevents
-                0x00006cf0        0xe build/sky/obj/process.o
-                0x00006cf0                process_nevents
+                0x00006f2c        0xe build/sky/obj/process.o
+                0x00006f2c                process_nevents
  .text.process_post
-                0x00006cfe       0x42 build/sky/obj/process.o
-                0x00006cfe                process_post
+                0x00006f3a       0x42 build/sky/obj/process.o
+                0x00006f3a                process_post
  .text.process_post_synch
-                0x00006d40       0x12 build/sky/obj/process.o
-                0x00006d40                process_post_synch
+                0x00006f7c       0x12 build/sky/obj/process.o
+                0x00006f7c                process_post_synch
  .text.process_start
-                0x00006d52       0x36 build/sky/obj/process.o
-                0x00006d52                process_start
+                0x00006f8e       0x36 build/sky/obj/process.o
+                0x00006f8e                process_start
  .text.process_poll
-                0x00006d88       0x18 build/sky/obj/process.o
-                0x00006d88                process_poll
+                0x00006fc4       0x18 build/sky/obj/process.o
+                0x00006fc4                process_poll
  .text.queuebuf_init
-                0x00006da0       0x12 build/sky/obj/queuebuf.o
-                0x00006da0                queuebuf_init
+                0x00006fdc       0x12 build/sky/obj/queuebuf.o
+                0x00006fdc                queuebuf_init
  .text.queuebuf_new_from_packetbuf
-                0x00006db2       0x52 build/sky/obj/queuebuf.o
-                0x00006db2                queuebuf_new_from_packetbuf
+                0x00006fee       0x52 build/sky/obj/queuebuf.o
+                0x00006fee                queuebuf_new_from_packetbuf
  .text.queuebuf_update_attr_from_packetbuf
-                0x00006e04       0x12 build/sky/obj/queuebuf.o
-                0x00006e04                queuebuf_update_attr_from_packetbuf
+                0x00007040       0x12 build/sky/obj/queuebuf.o
+                0x00007040                queuebuf_update_attr_from_packetbuf
  .text.queuebuf_free
-                0x00006e16       0x2a build/sky/obj/queuebuf.o
-                0x00006e16                queuebuf_free
+                0x00007052       0x2a build/sky/obj/queuebuf.o
+                0x00007052                queuebuf_free
  .text.queuebuf_to_packetbuf
-                0x00006e40       0x32 build/sky/obj/queuebuf.o
-                0x00006e40                queuebuf_to_packetbuf
+                0x0000707c       0x32 build/sky/obj/queuebuf.o
+                0x0000707c                queuebuf_to_packetbuf
  .text.random_init
-                0x00006e72        0x6 build/sky/obj/random.o
-                0x00006e72                random_init
+                0x000070ae        0x6 build/sky/obj/random.o
+                0x000070ae                random_init
  .text.random_rand
-                0x00006e78        0x6 build/sky/obj/random.o
-                0x00006e78                random_rand
+                0x000070b4        0x6 build/sky/obj/random.o
+                0x000070b4                random_rand
  .text.ringbuf_init
-                0x00006e7e       0x14 build/sky/obj/ringbuf.o
-                0x00006e7e                ringbuf_init
+                0x000070ba       0x14 build/sky/obj/ringbuf.o
+                0x000070ba                ringbuf_init
  .text.ringbuf_put
-                0x00006e92       0x38 build/sky/obj/ringbuf.o
-                0x00006e92                ringbuf_put
+                0x000070ce       0x38 build/sky/obj/ringbuf.o
+                0x000070ce                ringbuf_put
  .text.ringbuf_get
-                0x00006eca       0x32 build/sky/obj/ringbuf.o
-                0x00006eca                ringbuf_get
- .text.timera0  0x00006efc       0x2e build/sky/obj/rtimer-arch.o
-                0x00006efc                __isr_6
-                0x00006efc                timera0
+                0x00007106       0x32 build/sky/obj/ringbuf.o
+                0x00007106                ringbuf_get
+ .text.timera0  0x00007138       0x2e build/sky/obj/rtimer-arch.o
+                0x00007138                __isr_6
+                0x00007138                timera0
  .text.rtimer_arch_init
-                0x00006f2a        0xe build/sky/obj/rtimer-arch.o
-                0x00006f2a                rtimer_arch_init
+                0x00007166        0xe build/sky/obj/rtimer-arch.o
+                0x00007166                rtimer_arch_init
  .text.rtimer_arch_now
-                0x00006f38        0xe build/sky/obj/rtimer-arch.o
-                0x00006f38                rtimer_arch_now
+                0x00007174        0xe build/sky/obj/rtimer-arch.o
+                0x00007174                rtimer_arch_now
  .text.rtimer_arch_schedule
-                0x00006f46        0x6 build/sky/obj/rtimer-arch.o
-                0x00006f46                rtimer_arch_schedule
+                0x00007182        0x6 build/sky/obj/rtimer-arch.o
+                0x00007182                rtimer_arch_schedule
  .text.rtimer_init
-                0x00006f4c        0x6 build/sky/obj/rtimer.o
-                0x00006f4c                rtimer_init
+                0x00007188        0x6 build/sky/obj/rtimer.o
+                0x00007188                rtimer_init
  .text.rtimer_run_next
-                0x00006f52       0x26 build/sky/obj/rtimer.o
-                0x00006f52                rtimer_run_next
+                0x0000718e       0x26 build/sky/obj/rtimer.o
+                0x0000718e                rtimer_run_next
  .text.process_thread_sensors_process
-                0x00006f78       0xc2 build/sky/obj/sensors.o
+                0x000071b4       0xc2 build/sky/obj/sensors.o
  .text.sensors_changed
-                0x0000703a       0x2a build/sky/obj/sensors.o
-                0x0000703a                sensors_changed
+                0x00007276       0x2a build/sky/obj/sensors.o
+                0x00007276                sensors_changed
  .text.process_thread_serial_line_process
-                0x00007064       0xa4 build/sky/obj/serial-line.o
+                0x000072a0       0xa4 build/sky/obj/serial-line.o
  .text.serial_line_input_byte
-                0x00007108       0x42 build/sky/obj/serial-line.o
-                0x00007108                serial_line_input_byte
+                0x00007344       0x42 build/sky/obj/serial-line.o
+                0x00007344                serial_line_input_byte
  .text.serial_line_init
-                0x0000714a       0x1c build/sky/obj/serial-line.o
-                0x0000714a                serial_line_init
+                0x00007386       0x1c build/sky/obj/serial-line.o
+                0x00007386                serial_line_init
  .text.spi_init
-                0x00007166       0x30 build/sky/obj/spi-legacy.o
-                0x00007166                spi_init
+                0x000073a2       0x30 build/sky/obj/spi-legacy.o
+                0x000073a2                spi_init
  .text.stack_check_init
-                0x00007196       0x2e build/sky/obj/stack-check.o
-                0x00007196                stack_check_init
+                0x000073d2       0x2e build/sky/obj/stack-check.o
+                0x000073d2                stack_check_init
  .text.stack_check_get_usage
-                0x000071c4       0x54 build/sky/obj/stack-check.o
-                0x000071c4                stack_check_get_usage
+                0x00007400       0x54 build/sky/obj/stack-check.o
+                0x00007400                stack_check_get_usage
  .text.process_thread_stack_check_process
-                0x00007218       0xea build/sky/obj/stack-check.o
+                0x00007454       0xea build/sky/obj/stack-check.o
  .text.timer_set
-                0x00007302       0x1c build/sky/obj/timer.o
-                0x00007302                timer_set
+                0x0000753e       0x1c build/sky/obj/timer.o
+                0x0000753e                timer_set
  .text.timer_expired
-                0x0000731e       0x2a build/sky/obj/timer.o
-                0x0000731e                timer_expired
+                0x0000755a       0x2a build/sky/obj/timer.o
+                0x0000755a                timer_expired
  .text.timer_reset
-                0x00007348       0x1c build/sky/obj/timer.o
-                0x00007348                timer_reset
- .text.putchar  0x00007364       0x10 build/sky/obj/uart1-putchar.o
-                0x00007364                putchar
+                0x00007584       0x1c build/sky/obj/timer.o
+                0x00007584                timer_reset
+ .text.putchar  0x000075a0       0x10 build/sky/obj/uart1-putchar.o
+                0x000075a0                putchar
  .text.handle_rxdma_timer
-                0x00007374       0x3a build/sky/obj/uart1.o
+                0x000075b0       0x3a build/sky/obj/uart1.o
  .text.uart1_active
-                0x000073ae       0x18 build/sky/obj/uart1.o
-                0x000073ae                uart1_active
+                0x000075ea       0x18 build/sky/obj/uart1.o
+                0x000075ea                uart1_active
  .text.uart1_set_input
-                0x000073c6       0x20 build/sky/obj/uart1.o
-                0x000073c6                uart1_set_input
+                0x00007602       0x20 build/sky/obj/uart1.o
+                0x00007602                uart1_set_input
  .text.uart1_writeb
-                0x000073e6       0x18 build/sky/obj/uart1.o
-                0x000073e6                uart1_writeb
+                0x00007622       0x18 build/sky/obj/uart1.o
+                0x00007622                uart1_writeb
  .text.uart1_init
-                0x000073fe       0xf4 build/sky/obj/uart1.o
-                0x000073fe                uart1_init
+                0x0000763a       0xf4 build/sky/obj/uart1.o
+                0x0000763a                uart1_init
  .text.watchdog_interrupt
-                0x000074f2        0x6 build/sky/obj/watchdog.o
-                0x000074f2                __isr_10
-                0x000074f2                watchdog_interrupt
+                0x0000772e        0x6 build/sky/obj/watchdog.o
+                0x0000772e                __isr_10
+                0x0000772e                watchdog_interrupt
  .text.watchdog_start
-                0x000074f8       0x14 build/sky/obj/watchdog.o
-                0x000074f8                watchdog_start
+                0x00007734       0x14 build/sky/obj/watchdog.o
+                0x00007734                watchdog_start
  .text.watchdog_periodic
-                0x0000750c       0x12 build/sky/obj/watchdog.o
-                0x0000750c                watchdog_periodic
+                0x00007748       0x12 build/sky/obj/watchdog.o
+                0x00007748                watchdog_periodic
  .text.watchdog_stop
-                0x0000751e       0x16 build/sky/obj/watchdog.o
-                0x0000751e                watchdog_stop
+                0x0000775a       0x16 build/sky/obj/watchdog.o
+                0x0000775a                watchdog_stop
  .text.watchdog_init
-                0x00007534       0x12 build/sky/obj/watchdog.o
-                0x00007534                watchdog_init
+                0x00007770       0x12 build/sky/obj/watchdog.o
+                0x00007770                watchdog_init
  .text.xmem_init
-                0x00007546       0x3c build/sky/obj/xmem.o
-                0x00007546                xmem_init
- .text.printf   0x00007582       0x10 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
-                0x00007582                printf
+                0x00007782       0x3c build/sky/obj/xmem.o
+                0x00007782                xmem_init
+ .text.malloc   0x000077be       0xd0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+                0x000077be                malloc
+ .text.free     0x0000788e        0x6 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+                0x0000788e                free
+ .text.printf   0x00007894       0x10 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+                0x00007894                printf
  .text.print_field
-                0x00007592      0x194 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+                0x000078a4      0x194 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
  .text.vuprintf
-                0x00007726      0x63e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
-                0x00007726                vuprintf
- .text.puts     0x00007d64       0x2c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
-                0x00007d64                puts
- .text.rand     0x00007d90       0x26 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
-                0x00007d90                rand
- .text.srand    0x00007db6        0xa /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
-                0x00007db6                srand
- .text.memcmp   0x00007dc0       0x30 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
-                0x00007dc0                memcmp
- .text.memcpy   0x00007df0       0xfa /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
-                0x00007df0                memcpy
- .text.memset   0x00007eea       0x6a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
-                0x00007eea                memset
- .text.crt0     0x00007f54        0x2 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
-                0x00007f54                _unexpected_
- .text.libgcc   0x00007f56       0x2c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_mulsi3.o)
-                0x00007f56                __mulsi3
- .text.libgcc   0x00007f82       0x22 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod16.o)
-                0x00007f82                __udivhi3
-                0x00007f82                __ext_udivmod16
-                0x00007f9c                __umodhi3
- .text.libgcc   0x00007fa4       0x40 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod32.o)
-                0x00007fa4                __udivsi3
-                0x00007fa4                __ext_udivmod32
-                0x00007fda                __umodsi3
- .text.libgcc   0x00007fe4       0xf0 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
-                0x00007fe4                __xabi_udivmod64
-                0x00008042                __udivdi3
-                0x00008068                __umoddi3
-                0x00008096                __udivmoddi4
+                0x00007a38      0x63e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+                0x00007a38                vuprintf
+ .text.puts     0x00008076       0x2c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+                0x00008076                puts
+ .text.rand     0x000080a2       0x26 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+                0x000080a2                rand
+ .text.srand    0x000080c8        0xa /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+                0x000080c8                srand
+ .text.memcmp   0x000080d2       0x30 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+                0x000080d2                memcmp
+ .text.memcpy   0x00008102       0xfa /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+                0x00008102                memcpy
+ .text.memset   0x000081fc       0x6a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+                0x000081fc                memset
+ .text.crt0     0x00008266        0x2 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
+                0x00008266                _unexpected_
+ .text.libgcc   0x00008268       0x2c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_mulsi3.o)
+                0x00008268                __mulsi3
+ .text.libgcc   0x00008294       0x22 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod16.o)
+                0x00008294                __udivhi3
+                0x00008294                __ext_udivmod16
+                0x000082ae                __umodhi3
+ .text.libgcc   0x000082b6       0x40 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod32.o)
+                0x000082b6                __udivsi3
+                0x000082b6                __ext_udivmod32
+                0x000082ec                __umodsi3
+ .text.libgcc   0x000082f6       0xf0 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
+                0x000082f6                __xabi_udivmod64
+                0x00008354                __udivdi3
+                0x0000837a                __umoddi3
+                0x000083a8                __udivmoddi4
  *(SORT(.near.text) SORT(.near.text.*))
 
-.rodata         0x000080d4      0x35e
-                0x000080d4                . = ALIGN (0x2)
+.rodata         0x000083e8      0x472
+                0x000083e8                . = ALIGN (0x2)
  *(SORT(.rodata) SORT(.rodata.*) SORT(.gnu.linkonce.r.*))
  .rodata.get_value
-                0x000080d4       0x34 build/sky/obj/cc2420.o
+                0x000083e8       0x34 build/sky/obj/cc2420.o
  .rodata.set_value
-                0x00008108       0x10 build/sky/obj/cc2420.o
- .rodata        0x00008118       0x10 build/sky/obj/button-sensor.o
-                0x00008120                button_sensor
- .rodata        0x00008128       0x3e build/sky/obj/cc2420.o
-                0x00008128                cc2420_aes_128_driver
-                0x0000812c                cc2420_driver
- .rodata        0x00008166       0x14 build/sky/obj/csma.o
-                0x0000816c                csma_driver
- .rodata        0x0000817a        0x6 build/sky/obj/framer-802154.o
-                0x0000817a                framer_802154
- .rodata        0x00008180        0x8 build/sky/obj/linkaddr.o
-                0x00008180                linkaddr_null
- .rodata        0x00008188       0x9a build/sky/obj/log.o
- .rodata        0x00008222       0x34 build/sky/obj/main.o
-                0x00008250                autostart_processes
- .rodata        0x00008256       0x10 build/sky/obj/nullnet.o
-                0x0000825e                nullnet_driver
- .rodata        0x00008266       0x36 build/sky/obj/nullrouting.o
-                0x00008272                nullrouting_driver
- .rodata        0x0000829c       0xc1 build/sky/obj/contiki-main.o
- .rodata        0x0000835d        0xf build/sky/obj/ctimer.o
- .rodata        0x0000836c        0xc build/sky/obj/etimer.o
- .rodata        0x00008378        0x2 build/sky/obj/frame802154.o
- .rodata        0x0000837a       0x31 build/sky/obj/platform.o
- .rodata        0x000083ab        0x8 build/sky/obj/sensors.o
- .rodata        0x000083b3        0xe build/sky/obj/serial-line.o
- .rodata        0x000083c1       0x6a build/sky/obj/stack-check.o
+                0x0000841c       0x10 build/sky/obj/cc2420.o
+ .rodata        0x0000842c       0x10 build/sky/obj/button-sensor.o
+                0x00008434                button_sensor
+ .rodata        0x0000843c       0x3e build/sky/obj/cc2420.o
+                0x0000843c                cc2420_aes_128_driver
+                0x00008440                cc2420_driver
+ .rodata        0x0000847a       0x14 build/sky/obj/csma.o
+                0x00008480                csma_driver
+ .rodata        0x0000848e        0x6 build/sky/obj/framer-802154.o
+                0x0000848e                framer_802154
+ .rodata        0x00008494        0x8 build/sky/obj/linkaddr.o
+                0x00008494                linkaddr_null
+ .rodata        0x0000849c       0x9a build/sky/obj/log.o
+ .rodata        0x00008536      0x148 build/sky/obj/main.o
+                0x0000865c                autostart_processes
+ .rodata        0x0000867e       0x10 build/sky/obj/nullnet.o
+                0x00008686                nullnet_driver
+ .rodata        0x0000868e       0x36 build/sky/obj/nullrouting.o
+                0x0000869a                nullrouting_driver
+ .rodata        0x000086c4       0xc1 build/sky/obj/contiki-main.o
+ .rodata        0x00008785        0xf build/sky/obj/ctimer.o
+ .rodata        0x00008794        0xc build/sky/obj/etimer.o
+ .rodata        0x000087a0        0x2 build/sky/obj/frame802154.o
+ .rodata        0x000087a2       0x31 build/sky/obj/platform.o
+ .rodata        0x000087d3        0x8 build/sky/obj/sensors.o
+ .rodata        0x000087db        0xe build/sky/obj/serial-line.o
+ .rodata        0x000087e9       0x6a build/sky/obj/stack-check.o
  .rodata.vuprintf
-                0x0000842b        0x7 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+                0x00008853        0x7 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
  *(SORT(.near.rodata) SORT(.near.rodata.*))
-                0x00008432                . = ALIGN (0x2)
-                0x00008432                _etext = .
+                0x0000885a                . = ALIGN (0x2)
+                0x0000885a                _etext = .
 
-.data           0x00001100       0xd4 load address 0x00008432
+.data           0x00001100       0xe0 load address 0x0000885a
                 0x00001100                . = ALIGN (0x2)
                 0x00001100                __data_start = .
  *(SORT(.data) SORT(.data.*) SORT(.gnu.linkonce.d.*))
@@ -2186,102 +2208,110 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
  .data          0x0000113e       0x50 build/sky/obj/log.o
                 0x0000113e                all_modules
                 0x0000118c                curr_log_level_main
- .data          0x0000118e       0x12 build/sky/obj/main.o
-                0x0000118e                process
- .data          0x000011a0        0x2 build/sky/obj/msp430.o
- .data          0x000011a2       0x10 build/sky/obj/queuebuf.o
- .data          0x000011b2        0xa build/sky/obj/sensors.o
-                0x000011b2                sensors_process
- .data          0x000011bc        0xa build/sky/obj/serial-line.o
-                0x000011bc                serial_line_process
- .data          0x000011c6        0xa build/sky/obj/stack-check.o
-                0x000011c6                stack_check_process
- .data.next     0x000011d0        0x4 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .data          0x0000118e       0x1e build/sky/obj/main.o
+                0x0000118e                no_relay_process
+                0x00001198                main_process
+                0x000011a2                eps
+ .data          0x000011ac        0x2 build/sky/obj/msp430.o
+ .data          0x000011ae       0x10 build/sky/obj/queuebuf.o
+ .data          0x000011be        0xa build/sky/obj/sensors.o
+                0x000011be                sensors_process
+ .data          0x000011c8        0xa build/sky/obj/serial-line.o
+                0x000011c8                serial_line_process
+ .data          0x000011d2        0xa build/sky/obj/stack-check.o
+                0x000011d2                stack_check_process
+ .data.next     0x000011dc        0x4 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
  *(SORT(.near.data) SORT(.near.data.*))
-                0x000011d4                . = ALIGN (0x2)
-                0x000011d4                _edata = .
-                0x00008432                __data_load_start = LOADADDR (.data)
-                0x000000d4                __data_size = SIZEOF (.data)
+                0x000011e0                . = ALIGN (0x2)
+                0x000011e0                _edata = .
+                0x0000885a                __data_load_start = LOADADDR (.data)
+                0x000000e0                __data_size = SIZEOF (.data)
 
-.bss            0x000011d4      0xac0 load address 0x00008506
-                0x000011d4                __bss_start = .
+.bss            0x000011e0      0xad8 load address 0x0000893a
+                0x000011e0                __bss_start = .
  *(SORT(.bss) SORT(.bss.*))
- .bss           0x000011d4        0x8 build/sky/obj/button-sensor.o
- .bss           0x000011dc       0x10 build/sky/obj/cc2420.o
- .bss           0x000011ec        0xa build/sky/obj/clock.o
- .bss           0x000011f6       0xbc build/sky/obj/csma-output.o
- .bss           0x000012b2        0x4 build/sky/obj/ctimer.o
- .bss           0x000012b6        0x6 build/sky/obj/etimer.o
- .bss           0x000012bc       0x16 build/sky/obj/log.o
-                0x000012bc                curr_log_level_lwm2m
-                0x000012be                curr_log_level_snmp
-                0x000012c0                curr_log_level_coap
-                0x000012c2                curr_log_level_6top
-                0x000012c4                curr_log_level_framer
-                0x000012c6                curr_log_level_mac
-                0x000012c8                curr_log_level_nullnet
-                0x000012ca                curr_log_level_6lowpan
-                0x000012cc                curr_log_level_ipv6
-                0x000012ce                curr_log_level_tcpip
-                0x000012d0                curr_log_level_rpl
- .bss           0x000012d2       0xe2 build/sky/obj/mac-sequence.o
- .bss           0x000013b4        0xc build/sky/obj/main.o
- .bss           0x000013c0        0x2 build/sky/obj/node-id.o
-                0x000013c0                node_id
- .bss           0x000013c2        0x2 build/sky/obj/nullnet.o
- .bss           0x000013c4       0x86 build/sky/obj/packetbuf.o
- .bss           0x0000144a        0x8 build/sky/obj/platform.o
- .bss           0x00001452       0xc8 build/sky/obj/process.o
-                0x00001452                process_current
-                0x00001454                process_list
- .bss           0x0000151a      0x570 build/sky/obj/queuebuf.o
- .bss           0x00001a8a        0x2 build/sky/obj/rtimer.o
- .bss           0x00001a8c        0x6 build/sky/obj/sensors.o
- .bss           0x00001a92      0x10a build/sky/obj/serial-line.o
- .bss           0x00001b9c        0xe build/sky/obj/stack-check.o
- .bss           0x00001baa       0x9a build/sky/obj/uart1.o
- .bss           0x00001c44        0x2 build/sky/obj/watchdog.o
+ .bss           0x000011e0        0x8 build/sky/obj/button-sensor.o
+ .bss           0x000011e8       0x10 build/sky/obj/cc2420.o
+ .bss           0x000011f8        0xa build/sky/obj/clock.o
+ .bss           0x00001202       0xbc build/sky/obj/csma-output.o
+ .bss           0x000012be        0x4 build/sky/obj/ctimer.o
+ .bss           0x000012c2        0x6 build/sky/obj/etimer.o
+ .bss           0x000012c8       0x16 build/sky/obj/log.o
+                0x000012c8                curr_log_level_lwm2m
+                0x000012ca                curr_log_level_snmp
+                0x000012cc                curr_log_level_coap
+                0x000012ce                curr_log_level_6top
+                0x000012d0                curr_log_level_framer
+                0x000012d2                curr_log_level_mac
+                0x000012d4                curr_log_level_nullnet
+                0x000012d6                curr_log_level_6lowpan
+                0x000012d8                curr_log_level_ipv6
+                0x000012da                curr_log_level_tcpip
+                0x000012dc                curr_log_level_rpl
+ .bss           0x000012de       0xe2 build/sky/obj/mac-sequence.o
+ .bss           0x000013c0       0x20 build/sky/obj/main.o
+ .bss           0x000013e0        0x2 build/sky/obj/node-id.o
+                0x000013e0                node_id
+ .bss           0x000013e2        0x2 build/sky/obj/nullnet.o
+ .bss           0x000013e4       0x86 build/sky/obj/packetbuf.o
+ .bss           0x0000146a        0x8 build/sky/obj/platform.o
+ .bss           0x00001472       0xc8 build/sky/obj/process.o
+                0x00001472                process_current
+                0x00001474                process_list
+ .bss           0x0000153a      0x570 build/sky/obj/queuebuf.o
+ .bss           0x00001aaa        0x2 build/sky/obj/rtimer.o
+ .bss           0x00001aac        0x6 build/sky/obj/sensors.o
+ .bss           0x00001ab2      0x10a build/sky/obj/serial-line.o
+ .bss           0x00001bbc        0xe build/sky/obj/stack-check.o
+ .bss           0x00001bca       0x9a build/sky/obj/uart1.o
+ .bss           0x00001c64        0x2 build/sky/obj/watchdog.o
+ .bss.once.1520
+                0x00001c66        0x1 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
  *(SORT(.near.bss) SORT(.near.bss.*))
  *(SORT(COMMON))
- COMMON         0x00001c46        0xc build/sky/obj/cc2420.o
-                0x00001c46                cc2420_last_rssi
-                0x00001c48                cc2420_sfd_start_time
-                0x00001c4a                cc2420_last_correlation
-                0x00001c4c                cc2420_authority_level_of_sender
-                0x00001c4e                cc2420_sfd_counter
-                0x00001c50                cc2420_sfd_end_time
- COMMON         0x00001c52        0x8 build/sky/obj/linkaddr.o
-                0x00001c52                linkaddr_node_addr
- COMMON         0x00001c5a        0x2 build/sky/obj/msp430.o
-                0x00001c5a                msp430_dco_required
- COMMON         0x00001c5c        0x4 build/sky/obj/nullnet.o
-                0x00001c5c                nullnet_buf
-                0x00001c5e                nullnet_len
- COMMON         0x00001c60       0x28 build/sky/obj/packetbuf.o
-                0x00001c60                packetbuf_addrs
-                0x00001c70                packetbuf_attrs
- COMMON         0x00001c88        0x2 build/sky/obj/contiki-sky-platform.o
-                0x00001c88                sensors_flags
- COMMON         0x00001c8a        0x8 build/sky/obj/ds2411.o
-                0x00001c8a                ds2411_id
- COMMON         0x00001c92        0x1 build/sky/obj/sensors.o
-                0x00001c92                sensors_event
- COMMON         0x00001c93        0x1 build/sky/obj/serial-line.o
-                0x00001c93                serial_line_event_message
-                0x00001c94                . = ALIGN (0x2)
-                0x00001c94                __bss_end = .
-                0x00000ac0                __bss_size = SIZEOF (.bss)
+ *fill*         0x00001c67        0x1 00
+ COMMON         0x00001c68        0xc build/sky/obj/cc2420.o
+                0x00001c68                cc2420_last_rssi
+                0x00001c6a                cc2420_sfd_start_time
+                0x00001c6c                cc2420_last_correlation
+                0x00001c6e                cc2420_authority_level_of_sender
+                0x00001c70                cc2420_sfd_counter
+                0x00001c72                cc2420_sfd_end_time
+ COMMON         0x00001c74        0x8 build/sky/obj/linkaddr.o
+                0x00001c74                linkaddr_node_addr
+ COMMON         0x00001c7c        0x2 build/sky/obj/msp430.o
+                0x00001c7c                msp430_dco_required
+ COMMON         0x00001c7e        0x4 build/sky/obj/nullnet.o
+                0x00001c7e                nullnet_buf
+                0x00001c80                nullnet_len
+ COMMON         0x00001c82       0x28 build/sky/obj/packetbuf.o
+                0x00001c82                packetbuf_addrs
+                0x00001c92                packetbuf_attrs
+ COMMON         0x00001caa        0x2 build/sky/obj/contiki-sky-platform.o
+                0x00001caa                sensors_flags
+ COMMON         0x00001cac        0x8 build/sky/obj/ds2411.o
+                0x00001cac                ds2411_id
+ COMMON         0x00001cb4        0x2 build/sky/obj/main.o
+                0x00001cb4                exp_done
+                0x00001cb5                acknowledgement
+ COMMON         0x00001cb6        0x1 build/sky/obj/sensors.o
+                0x00001cb6                sensors_event
+ COMMON         0x00001cb7        0x1 build/sky/obj/serial-line.o
+                0x00001cb7                serial_line_event_message
+                0x00001cb8                . = ALIGN (0x2)
+                0x00001cb8                __bss_end = .
+                0x00000ad8                __bss_size = SIZEOF (.bss)
 
-.noinit         0x00001c94        0x2 load address 0x00008506
-                0x00001c94                . = ALIGN (0x2)
-                0x00001c94                __noinit_start = .
+.noinit         0x00001cb8        0x2 load address 0x0000893a
+                0x00001cb8                . = ALIGN (0x2)
+                0x00001cb8                __noinit_start = .
  *(SORT(.noinit) SORT(.noinit.*))
- .noinit.crt0   0x00001c94        0x2 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
-                0x00001c94                __wdt_clear_value
-                0x00001c96                . = ALIGN (0x2)
-                0x00001c96                __noinit_end = .
-                0x00001c96                . = ALIGN (0x2)
-                0x00001c96                _end = .
+ .noinit.crt0   0x00001cb8        0x2 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
+                0x00001cb8                __wdt_clear_value
+                0x00001cba                . = ALIGN (0x2)
+                0x00001cba                __noinit_end = .
+                0x00001cba                . = ALIGN (0x2)
+                0x00001cba                _end = .
 
 .infomem        0x00001000        0x0
                 0x00001000                . = ALIGN (0x2)
@@ -2451,6 +2481,7 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
  .comment       0x00000000       0x31 build/sky/obj/uart1.o
  .comment       0x00000000       0x31 build/sky/obj/watchdog.o
  .comment       0x00000000       0x31 build/sky/obj/xmem.o
+ .comment       0x00000000       0x31 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
  .comment       0x00000000       0x31 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
  .comment       0x00000000       0x31 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
  .comment       0x00000000       0x31 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
@@ -2471,7 +2502,7 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
 .debug_sfnames
  *(SORT(.debug_sfnames))
 
-.debug_aranges  0x00000000      0x178
+.debug_aranges  0x00000000      0x190
  *(SORT(.debug_aranges))
  .debug_aranges
                 0x00000000       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/crt0ivtbl16.o
@@ -2496,123 +2527,132 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
  .debug_aranges
                 0x000000c8       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
  .debug_aranges
-                0x000000dc       0x18 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+                0x000000dc       0x18 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
  .debug_aranges
-                0x000000f4       0x18 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+                0x000000f4       0x18 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
  .debug_aranges
-                0x0000010c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+                0x0000010c       0x18 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
  .debug_aranges
-                0x00000120       0x1c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+                0x00000124       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
  .debug_aranges
-                0x0000013c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+                0x00000138       0x1c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
  .debug_aranges
-                0x00000150       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+                0x00000154       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
  .debug_aranges
-                0x00000164       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+                0x00000168       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_aranges
+                0x0000017c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
 
 .debug_pubnames
  *(SORT(.debug_pubnames))
 
-.debug_info     0x00000000     0x1272
+.debug_info     0x00000000     0x13dd
  *(SORT(.debug_info))
  .debug_info    0x00000000       0x8f /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/crt0ivtbl16.o
  .debug_info    0x0000008f       0x8c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_mulsi3.o)
  .debug_info    0x0000011b       0x8c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod16.o)
  .debug_info    0x000001a7       0x8c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod32.o)
- .debug_info    0x00000233      0x16e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
- .debug_info    0x000003a1      0x5d4 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
- .debug_info    0x00000975       0xc7 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
- .debug_info    0x00000a3c      0x146 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
- .debug_info    0x00000b82       0xe5 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
- .debug_info    0x00000c67      0x12c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
- .debug_info    0x00000d93      0x117 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
- .debug_info    0x00000eaa       0x8c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
- .debug_info    0x00000f36       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
- .debug_info    0x00000fc0       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__init_stack.o)
- .debug_info    0x0000104a       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_copy_data.o)
- .debug_info    0x000010d4       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_clear_bss.o)
- .debug_info    0x0000115e       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_endless_loop__.o)
- .debug_info    0x000011e8       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
+ .debug_info    0x00000233      0x16b /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .debug_info    0x0000039e      0x16e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_info    0x0000050c      0x5d4 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_info    0x00000ae0       0xc7 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_info    0x00000ba7      0x146 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_info    0x00000ced       0xe5 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_info    0x00000dd2      0x12c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_info    0x00000efe      0x117 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_info    0x00001015       0x8c /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
+ .debug_info    0x000010a1       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
+ .debug_info    0x0000112b       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__init_stack.o)
+ .debug_info    0x000011b5       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_copy_data.o)
+ .debug_info    0x0000123f       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_clear_bss.o)
+ .debug_info    0x000012c9       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_endless_loop__.o)
+ .debug_info    0x00001353       0x8a /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
  *(SORT(.gnu.linkonce.wi.*))
 
-.debug_abbrev   0x00000000      0x79c
+.debug_abbrev   0x00000000      0x8a8
  *(SORT(.debug_abbrev))
  .debug_abbrev  0x00000000       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/crt0ivtbl16.o
  .debug_abbrev  0x00000014       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_mulsi3.o)
  .debug_abbrev  0x00000028       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod16.o)
  .debug_abbrev  0x0000003c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod32.o)
- .debug_abbrev  0x00000050       0xfa /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
- .debug_abbrev  0x0000014a      0x23e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
- .debug_abbrev  0x00000388       0xa3 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
- .debug_abbrev  0x0000042b       0xfb /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
- .debug_abbrev  0x00000526       0x9e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
- .debug_abbrev  0x000005c4       0xab /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
- .debug_abbrev  0x0000066f       0xa1 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
- .debug_abbrev  0x00000710       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
- .debug_abbrev  0x00000724       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
- .debug_abbrev  0x00000738       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__init_stack.o)
- .debug_abbrev  0x0000074c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_copy_data.o)
- .debug_abbrev  0x00000760       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_clear_bss.o)
- .debug_abbrev  0x00000774       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_endless_loop__.o)
- .debug_abbrev  0x00000788       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
+ .debug_abbrev  0x00000050      0x10c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .debug_abbrev  0x0000015c       0xfa /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_abbrev  0x00000256      0x23e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_abbrev  0x00000494       0xa3 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_abbrev  0x00000537       0xfb /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_abbrev  0x00000632       0x9e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_abbrev  0x000006d0       0xab /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_abbrev  0x0000077b       0xa1 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_abbrev  0x0000081c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
+ .debug_abbrev  0x00000830       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
+ .debug_abbrev  0x00000844       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__init_stack.o)
+ .debug_abbrev  0x00000858       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_copy_data.o)
+ .debug_abbrev  0x0000086c       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_clear_bss.o)
+ .debug_abbrev  0x00000880       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_endless_loop__.o)
+ .debug_abbrev  0x00000894       0x14 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
 
-.debug_line     0x00000000      0xbfb
+.debug_line     0x00000000      0xce9
  *(SORT(.debug_line))
  .debug_line    0x00000000       0x64 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/crt0ivtbl16.o
  .debug_line    0x00000064       0x77 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_mulsi3.o)
  .debug_line    0x000000db       0x70 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod16.o)
  .debug_line    0x0000014b       0x7f /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod32.o)
- .debug_line    0x000001ca       0xa9 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
- .debug_line    0x00000273      0x30a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
- .debug_line    0x0000057d       0x65 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
- .debug_line    0x000005e2       0x68 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
- .debug_line    0x0000064a       0x8f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
- .debug_line    0x000006d9      0x118 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
- .debug_line    0x000007f1       0xf2 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
- .debug_line    0x000008e3       0xc9 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
- .debug_line    0x000009ac       0x62 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
- .debug_line    0x00000a0e       0x60 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__init_stack.o)
- .debug_line    0x00000a6e       0x66 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_copy_data.o)
- .debug_line    0x00000ad4       0x66 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_clear_bss.o)
- .debug_line    0x00000b3a       0x61 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_endless_loop__.o)
- .debug_line    0x00000b9b       0x60 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
+ .debug_line    0x000001ca       0xee /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .debug_line    0x000002b8       0xa9 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_line    0x00000361      0x30a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_line    0x0000066b       0x65 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_line    0x000006d0       0x68 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_line    0x00000738       0x8f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_line    0x000007c7      0x118 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_line    0x000008df       0xf2 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_line    0x000009d1       0xc9 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libgcc.a(_udivmod64.o)
+ .debug_line    0x00000a9a       0x62 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__watchdog_support.o)
+ .debug_line    0x00000afc       0x60 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(__init_stack.o)
+ .debug_line    0x00000b5c       0x66 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_copy_data.o)
+ .debug_line    0x00000bc2       0x66 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_clear_bss.o)
+ .debug_line    0x00000c28       0x61 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_endless_loop__.o)
+ .debug_line    0x00000c89       0x60 /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a(_unexpected_.o)
 
-.debug_frame    0x00000000      0x1b6
+.debug_frame    0x00000000      0x1f4
  *(SORT(.debug_frame))
- .debug_frame   0x00000000       0x2a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
- .debug_frame   0x0000002a       0xa0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
- .debug_frame   0x000000ca       0x24 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
- .debug_frame   0x000000ee       0x3c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
- .debug_frame   0x0000012a       0x28 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
- .debug_frame   0x00000152       0x32 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
- .debug_frame   0x00000184       0x32 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_frame   0x00000000       0x3e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .debug_frame   0x0000003e       0x2a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_frame   0x00000068       0xa0 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_frame   0x00000108       0x24 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_frame   0x0000012c       0x3c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_frame   0x00000168       0x28 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_frame   0x00000190       0x32 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_frame   0x000001c2       0x32 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
 
-.debug_str      0x00000000      0x3ca
+.debug_str      0x00000000      0x41a
  *(SORT(.debug_str))
- .debug_str     0x00000000       0xe2 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_str     0x00000000       0xf5 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+                                0x144 (size before relaxing)
+ .debug_str     0x000000f5       0x49 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
                                 0x12a (size before relaxing)
- .debug_str     0x000000e2      0x218 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_str     0x0000013e      0x218 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
                                 0x375 (size before relaxing)
- .debug_str     0x000002fa       0x1d /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_str     0x00000356       0x1d /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
                                  0xef (size before relaxing)
- .debug_str     0x00000317       0x2f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_str     0x00000373       0x2a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
                                 0x106 (size before relaxing)
- .debug_str     0x00000346       0x20 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_str     0x0000039d       0x19 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
                                  0xf2 (size before relaxing)
- .debug_str     0x00000366       0x3e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_str     0x000003b6       0x3e /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
                                 0x120 (size before relaxing)
- .debug_str     0x000003a4       0x26 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_str     0x000003f4       0x26 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
                                 0x11e (size before relaxing)
 
-.debug_loc      0x00000000      0xbe1
+.debug_loc      0x00000000      0xcfb
  *(SORT(.debug_loc))
- .debug_loc     0x00000000       0x4c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
- .debug_loc     0x0000004c      0x80f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
- .debug_loc     0x0000085b       0x26 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
- .debug_loc     0x00000881       0x4f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
- .debug_loc     0x000008d0       0x4d /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
- .debug_loc     0x0000091d      0x1e3 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
- .debug_loc     0x00000b00       0xe1 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_loc     0x00000000      0x11a /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .debug_loc     0x0000011a       0x4c /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_loc     0x00000166      0x80f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_loc     0x00000975       0x26 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_loc     0x0000099b       0x4f /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_loc     0x000009ea       0x4d /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_loc     0x00000a37      0x1e3 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_loc     0x00000c1a       0xe1 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
 
 .debug_macinfo
  *(SORT(.debug_macinfo))
@@ -2620,16 +2660,17 @@ LOAD /usr/local/bin/../lib/gcc/msp430/4.7.2/mmpy-16/libcrt0.a
 .debug_pubtypes
  *(SORT(.debug_pubtypes))
 
-.debug_ranges   0x00000000       0x60
+.debug_ranges   0x00000000       0x78
  *(SORT(.debug_ranges))
- .debug_ranges  0x00000000        0xc /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
- .debug_ranges  0x0000000c       0x24 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
- .debug_ranges  0x00000030        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
- .debug_ranges  0x00000038       0x10 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
- .debug_ranges  0x00000048        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
- .debug_ranges  0x00000050        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
- .debug_ranges  0x00000058        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
+ .debug_ranges  0x00000000       0x18 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(malloc.o)
+ .debug_ranges  0x00000018        0xc /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(printf.o)
+ .debug_ranges  0x00000024       0x24 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(vuprintf.o)
+ .debug_ranges  0x00000048        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(puts.o)
+ .debug_ranges  0x00000050       0x10 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(rand.o)
+ .debug_ranges  0x00000060        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcmp.o)
+ .debug_ranges  0x00000068        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memcpy.o)
+ .debug_ranges  0x00000070        0x8 /usr/local/bin/../lib/gcc/msp430/4.7.2/../../../../msp430/lib/mmpy-16/libc.a(memset.o)
                 0x00003900                PROVIDE (__stack, (ORIGIN (ram) + 0x2800))
-                0x00008432                __data_start_rom = _etext
-                0x00008506                __data_end_rom = (_etext + SIZEOF (.data))
+                0x0000885a                __data_start_rom = _etext
+                0x0000893a                __data_end_rom = (_etext + SIZEOF (.data))
 OUTPUT(build/sky/main.sky elf32-msp430)
