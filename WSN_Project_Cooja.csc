@@ -8,8 +8,8 @@
     <motedelay_us>1000000</motedelay_us>
     <radiomedium>
       org.contikios.cooja.radiomediums.UDGM
-      <transmitting_range>50.0</transmitting_range>
-      <interference_range>100.0</interference_range>
+      <transmitting_range>20.0</transmitting_range>
+      <interference_range>30.0</interference_range>
       <success_ratio_tx>1.0</success_ratio_tx>
       <success_ratio_rx>0.0</success_ratio_rx>
     </radiomedium>
@@ -61,7 +61,7 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>0.0</x>
+        <x>40.0</x>
         <y>0.0</y>
         <z>0.0</z>
       </interface_config>
@@ -79,7 +79,7 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>40.0</x>
+        <x>80.0</x>
         <y>0.0</y>
         <z>0.0</z>
       </interface_config>
