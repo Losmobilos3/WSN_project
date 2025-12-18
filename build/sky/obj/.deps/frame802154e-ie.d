@@ -1,7 +1,7 @@
 build/sky/obj/frame802154e-ie.o: \
  ../../os/net/mac/framer/frame802154e-ie.c \
  ../../os/net/mac/framer/frame802154e-ie.h ../../os/contiki.h \
- ../../arch/platform/sky/./contiki-conf.h \
+ ../../arch/platform/sky/./contiki-conf.h project-conf.h \
  ../../arch/platform/sky/./sky-def.h ../../arch/cpu/msp430/./msp430-def.h \
  ../../arch/cpu/msp430/./msp430-conf.h ../../os/contiki-default-conf.h \
  ../../os/sys/process.h ../../os/sys/pt.h ../../os/sys/lc.h \
@@ -28,6 +28,8 @@ build/sky/obj/frame802154e-ie.o: \
 ../../os/contiki.h:
 
 ../../arch/platform/sky/./contiki-conf.h:
+
+project-conf.h:
 
 ../../arch/platform/sky/./sky-def.h:
 

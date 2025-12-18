@@ -1,5 +1,5 @@
 build/sky/obj/compower.o: ../../os/sys/compower.c ../../os/contiki.h \
- ../../arch/platform/sky/./contiki-conf.h \
+ ../../arch/platform/sky/./contiki-conf.h project-conf.h \
  ../../arch/platform/sky/./sky-def.h ../../arch/cpu/msp430/./msp430-def.h \
  ../../arch/cpu/msp430/./msp430-conf.h ../../os/contiki-default-conf.h \
  ../../os/sys/process.h ../../os/sys/pt.h ../../os/sys/lc.h \
@@ -18,6 +18,8 @@ build/sky/obj/compower.o: ../../os/sys/compower.c ../../os/contiki.h \
 ../../os/contiki.h:
 
 ../../arch/platform/sky/./contiki-conf.h:
+
+project-conf.h:
 
 ../../arch/platform/sky/./sky-def.h:
 

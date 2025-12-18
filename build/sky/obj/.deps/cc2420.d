@@ -1,6 +1,7 @@
 build/sky/obj/cc2420.o: ../../arch/dev/radio/cc2420/cc2420.c \
  ../../os/contiki.h ../../arch/platform/sky/./contiki-conf.h \
- ../../arch/platform/sky/./sky-def.h ../../arch/cpu/msp430/./msp430-def.h \
+ project-conf.h ../../arch/platform/sky/./sky-def.h \
+ ../../arch/cpu/msp430/./msp430-def.h \
  ../../arch/cpu/msp430/./msp430-conf.h ../../os/contiki-default-conf.h \
  ../../os/sys/process.h ../../os/sys/pt.h ../../os/sys/lc.h \
  ../../os/sys/lc-switch.h ../../os/sys/cc.h ../../os/sys/cc-gcc.h \
@@ -23,6 +24,8 @@ build/sky/obj/cc2420.o: ../../arch/dev/radio/cc2420/cc2420.c \
 ../../os/contiki.h:
 
 ../../arch/platform/sky/./contiki-conf.h:
+
+project-conf.h:
 
 ../../arch/platform/sky/./sky-def.h:
 

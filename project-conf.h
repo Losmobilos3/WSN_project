@@ -1,0 +1,10 @@
+#ifndef PROJECT_CONF_H
+#define PROJECT_CONF_H
+
+#define ENERGEST_CONF_ON 1
+
+// #define TSCH_SCHEDULE_CONF_DEFAULT_LENGTH 3
+
+// #define CSMA_CONF_MAX_FRAME_RETRIES 0
+
+#endif

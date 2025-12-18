@@ -7,11 +7,8 @@
     <randomseed>123456</randomseed>
     <motedelay_us>1000000</motedelay_us>
     <radiomedium>
-      org.contikios.cooja.radiomediums.UDGM
-      <transmitting_range>20.0</transmitting_range>
-      <interference_range>30.0</interference_range>
-      <success_ratio_tx>1.0</success_ratio_tx>
-      <success_ratio_rx>0.0</success_ratio_rx>
+      org.contikios.mrm.MRM
+      <obstacles />
     </radiomedium>
     <events>
       <logoutput>40000</logoutput>
@@ -23,7 +20,7 @@
       <identifier>mtype634</identifier>
       <description>Custom Sky Motetype</description>
       <source EXPORT="discard">[CONTIKI_DIR]/shared_files/WSN_project/main.c</source>
-      <commands EXPORT="discard">make -j$(CPUS) main.sky TARGET=sky</commands>
+      <commands EXPORT="discard">make TARGET=sky main.sky </commands>
       <firmware EXPORT="copy">[CONTIKI_DIR]/shared_files/WSN_project/main.sky</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.RimeAddress</moteinterface>
@@ -61,7 +58,7 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>40.0</x>
+        <x>15.0</x>
         <y>0.0</y>
         <z>0.0</z>
       </interface_config>
@@ -79,7 +76,7 @@
     <mote>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>80.0</x>
+        <x>30.0</x>
         <y>0.0</y>
         <z>0.0</z>
       </interface_config>
@@ -109,7 +106,7 @@
     <plugin_config>
       <moterelations>true</moterelations>
       <skin>org.contikios.cooja.plugins.skins.IDVisualizerSkin</skin>
-      <skin>org.contikios.cooja.plugins.skins.UDGMVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.GridVisualizerSkin</skin>
       <viewport>6.0 0.0 0.0 6.0 0.0 0.0</viewport>
     </plugin_config>
     <width>400</width>
